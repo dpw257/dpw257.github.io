@@ -82,7 +82,7 @@
 											Streamed data in real-time using 3 AWS Kinesis data streams & performed analysis using Spark Databricks.</p><br>
 										<p><a class="image"><img src="images/project-aws-pipeline1.jpg" alt="" style="width:720px;"/></a><br>
 										<span style="font-size:10pt"><i>Systems diagram of the data pipeline</i></span></p><br>
-										<p>Batch part: [BACKGROUND: VPC (containter for resources; ~ environment) > EC2 instance (client 
+										<p>Batch part: [BACKGROUND: VPC (container for resources; ~ environment) > EC2 instance (client 
 											for the Kafka cluster)] API Gateway RESTful API > Kafka Rest proxy + Kafka-connect s3 > Kafka cluster??? =? 
 											send data to 3 different Kafka topics on MSK.</p>
 										<p>Distributed batch data from MSK to an AWS S3 data lake using MSK Connect plugin-connector pair.</p><br>
