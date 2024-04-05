@@ -1,0 +1,267 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>POS Tagger - Computational Linguistics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="right-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Computational Linguistics</a></h1>
+							</header>
+						</div>
+
+
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-8 col-12-mobile" id="content">
+								<article id="main">
+									<header>
+										<h2>Part-of-speech Tagger for a Minority Language</h2>
+										<p>
+
+										</p>
+									</header>
+									<p><b><i>
+										The Irish government spends 1.2 billion euros annually on fostering the Irish language and aims to raise 
+										the number of daily speakers to 250,000 by 2030.
+									</b></p></i>
+									<p><b><i>
+										While an increasing number of English speakers are the learning the language, the traditional dialects 
+										of Irish are disappearing. Linguists have observed fundamental changes in the way the language is spoken 
+										due to the influence of English. Young native speakers increasingly use English-influenced syntax and fewer 
+										complex sentence structures.
+									</b></p></i>
+									<p><b><i>
+										Since previous research focused primarily on spoken Irish, changes to the written language were investigated 
+										to provide further insight into the current linguistic situation to help inform language policy and 
+										investment decisions.
+									</b></p></i>
+									<section>
+										<header>
+											<h3>1. Project objectives</h3>
+										</header>
+										<p>
+											&nbsp; &#x25cf; &nbsp; Develop a tool that automatically labels tokens in a sentence with their grammatical function to high granularity.
+											<br>
+											&nbsp; &#x25cf; &nbsp; Train and test the POS tagger on a diachronic corpus (collection of texts written across a large timespan).
+											<br>
+											&nbsp; &#x25cf;	&nbsp; Analyse changes in frequency of selected syntactical features over time.
+										</p><br>
+									</section>
+									<section>
+										<header>
+											<h3>2. Methodology</h3>
+										</header>
+										<p>The two syntactical features investigated were:<br>
+											&nbsp; &nbsp; &#x25CB; &nbsp; Ratio of complex sentences to simple sentences<br>
+											&nbsp; &nbsp; &#x25CB; &nbsp; Ratio of synthetic to analytic verb forms<br>
+											A tagset was created for this purpose that included tags for markers of sentence complexity 
+											(i.e. conjunctions) and tags for different verb forms and tenses.
+											</p><br>
+										<h1>2.1. Data collection and preprocessing</h1><br>
+										<p>A corpus consisting of 6000 sentences from a single publication spanning the years 1960 to 2020 was digitised with OCR, proofread and manually 
+											tagged with the newly defined tagset.</p><br>
+										<p><a class="image"><img src="images/project-pos-tagger1.jpg" alt="" style="width:680px;"/></a><br>
+										<span style="font-size:10pt"><i>Tagged sentence from the corpus</i></span></p><br>
+										<h1>2.2. Model design</h1><br>
+										<p>A hidden Markov model was used to calculate the probability of a particular word being a particular part of speech (emission probability) and 
+											determine which tag was most likely to be the next one in the sequence (transmission probability) for each token in the sentence.<br> 
+											<br>The hidden Markov model was coupled with a Viterbi algorithm (written in Python) to reduce the computing power required to 
+											tag a sentence by excluding low probability tokens from further calculations.											
+										</p>
+										<p><a class="image"><img src="images/project-pos-tagger5.jpg" alt="" style="width:500px;"/></a><br>
+										<span style="font-size:10pt"><i>Section of code from HMM/Viterbi model</i></span></p><br>
+										<p>The corpus was split randomly 75/25 into training and test sets with equal proportions of sentences from each decade. To reduce the 
+											likelihood of out-of-vocabulary (OOV) tokens, tables of common Irish verbs were added to the training data, ensuring non-zero 
+											emission probabilities for these tokens.</p><br>
+										<h1>2.3. Performance metrics</h1><br>
+										<p>&nbsp; &#x25cf; &nbsp; Overall accuracy score for  model and for each decade in the corpus.
+											<br>
+											&nbsp; &#x25cf; &nbsp; Precision, recall, and F-score individual verb tags, complexity markers tags and overall model.
+											<br>
+											&nbsp; &#x25cf; &nbsp; All analyses calculated for both unigram and bigram transmission probabilities.
+										</p><br>
+										<h1>2.4. Limitations</h1><br>
+										<p>To prevent underflow due to the multiplication of small decimal probabilities, the probability values of sentences with 
+											fewer than 20 tokens are multiplied by 10 at each node in the hidden Markov model, while sentences with 20 or more tokens 
+											are multiplied by 1000 at each node. The outcome of the tagging is unaffected. </p><br>
+									</section>
+									<section>
+										<header>
+											<h3>3. Results</h3>
+										</header>
+										<p>
+											The unigram model achieved higher overall accuracy (88.0%) than the bigram model (78.9%), so the unigram model was 
+											chosen for conducting the linguistic evaluation of the corpus. 
+											The individual f-scores for specific tags demonstrate that the model is able to correctly tag parts of speech for 
+											Irish, including the specific linguistic features being investigated.
+										</p><br>
+										<p><a class="image"><img src="images/project-pos-tagger3.jpg" alt="" style="width:300px;"/></a><br>
+										<span style="font-size:10pt"><i>Precision, recall, f-scores for complexity marker tags (unigram model)</i></span></p><br>
+										<p>The model struggles to correctly tag relative pronouns, since the tag 'a' can be assigned [rel] (relative pronoun), [pos] 
+											(possessive pronoun), or [par] (particle). The overall f-score for complexity tags lower as a result. 
+											For this reason, relative pronouns were excluded when conducting the linguistic analysis section.
+											There is also some ambiguity between [sconj] (subordinating conjunction) or [conj] (coordinating conjunction) tags.
+										</p><br>
+										<p><a class="image"><img src="images/project-pos-tagger2.jpg" alt="" style="width:550px;"/></a><br>
+										<span style="font-size:10pt"><i>Confusion matrix for complexity marker tags (unigram model)</i></span></p><br>
+										<p>Both models (unigram and bigram) achieved similar precision, recall and f-score values in tagging verb 
+											forms. The score were higher than for complexity tags, since verb tags are relatively unambiguous. The unigram scores slightly 
+											higher overall (91.5% accuracy). The inclusion of tables of common Irish verb verbs to the emission data also improved accuracy. 
+										</p><br>
+										<p><a class="image"><img src="images/project-pos-tagger4.jpg" alt="" style="width:370px;"/></a><br>
+										<span style="font-size:10pt"><i>Precision, recall, f-scores for verb form tags (unigram model)</i></span></p><br>
+										<p>In the linguistic analysis, a shift away from synthetic to toward analytic verb forms was observed. No clear trend regarding 
+											change in sentence complexity since 1960 was found. 
+										</p><br>
+									</section>
+									
+									<section>
+										<header>
+											<h3>4. Insights</h3>
+										</header>
+										<p>
+											Combining sconj and conj as one tag<br>
+											Reading material for younger speakers.<br>
+											Further monitoring of changes in quality of language.<br>
+											Writers may be older speakers. Provides good baseline for future research.<br>
+											Analyse other text sources, social media, blogs, L2 users.<br>
+										</p>
+										<footer>
+											<br><br>
+											<a href="index.html" class="button">Home</a>
+										</footer>
+									</section>
+								</article>
+							</div>
+							<div class="col-4 col-12-mobile" id="sidebar">
+								<hr class="first" />
+								<section>
+									<p>
+										Explore the code for this project:
+									</p>
+									<header>
+										<h3><a href="https://github.com/dpw257/hmm_viterbi_pos_tagger" class="icon brands fa-github">   GitHub repository</a></h3>
+									</header>
+
+								</section>
+								<hr />
+								<section>
+									<header>
+										<h3><a>Other projects</a></h3>
+									</header>
+
+									<div class="row gtr-50">
+										<div class="col-4">
+											<a href="project-product-recommend.html" class="image fit"><img src="images/pic12.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-product-recommend.html">Product recommendation system</a></h4>
+											<p>
+												BeautifulSoup, product clustering, EDA, dynamic pricing.
+											</p>
+										</div>
+										<div class="col-4">
+											<a href="project-aws-pipeline.html" class="image fit"><img src="images/pic10.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-aws-pipeline.html">AWS data pipeline for user data</a></h4>
+											<p>
+												Batch and stream processing,<br>AWS Kinesis, S3, Databricks, Airflow.
+											</p>
+										</div>
+										<div class="col-4">
+											<a href="project-sql-upload-data.html" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-sql-upload-data.html">PostgreSQL database for sales</a></h4>
+											<p>
+												Data extracted from RDS database and RESTful API, cleaned, SQL.
+											</p>
+										</div>
+
+										<!--  <div class="col-4">
+											<a href="project-pos-tagger.html" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-pos-tagger.html">POS tagger for minority language</a></h4>
+											<p>
+												Based on hidden Markov model with Viterbi algorithm.</p>
+											</p>
+										</div>  -->
+										<!--<div class="col-4">
+											<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4>Malesuada fermentum</h4>
+											<p>
+												Amet nullam fringilla nibh nulla convallis tique ante proin.
+											</p>
+										</div>-->
+									</div>
+								</section>
+								<hr />
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Contact -->
+
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

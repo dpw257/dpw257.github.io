@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>SQL Sales Database - Data Engineering</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="right-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Data Engineering</a></h1>
+							</header>
+						</div>
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-8 col-12-mobile" id="content">
+								<article id="main">
+									<header>
+										<h2>PostgreSQL Database for Sales Records</h2>
+										<p>
+											<br>
+										</p>
+									</header>
+									<p><b><i>
+										A multinational company stored its customer, sales and revenue data in different locations and 
+										formats. The data was extracted, cleaned and converted into a centralised database to enable easy access 
+										and allow the company to make better, data-driven decisions.
+									</b></p></i>
+									<section>
+									<header>
+										<h3>1. Project objectives</h3>
+									</header>
+									<p>
+										&nbsp; &#x25cf; &nbsp; Extract and clean data from AWS RDS database, RESTful API, PDF, JSON and CSV files.<br>
+										&nbsp; &#x25cf; &nbsp; Load the data into a PostgreSQL database with dimensions tables.<br>
+										&nbsp; &#x25cf; &nbsp; Run SQL queries to extract business insights on sales and revenue.<br>
+									</p><br>
+								</section>
+									<section>
+										<header>
+										<h3>2. Methodology</h3>
+										</header>
+										<h1>2.1. Dataset</h1><br>
+										<p>Six tables with data on customers, stores, products, orders, dates, and credit cards were accessed 
+											from an RDS database, an API and an S3 bucket on AWS Cloud, as well as via direct links to files. </p><br>
+										<h1>2.2. Extracting</h1><br>
+										<p>A class of methods was defined to access the AWS server and extract each file type as a Pandas dataframe. 
+											Access credentials were read securely from a .yaml file. The S3 bucket was accessed using boto3, and the PDF was 
+											read with tabula in Python.
+										</p><br>
+										<p><a class="image"><img src="images/project-sql-upload1.jpg" alt="" style="width:680px;"/></a><br>
+										<span style="font-size:10pt"><i>Method for connecting to AWS RDS database</i></span></p><br>
+										<h1>2.3. Cleaning</h1><br>
+										<p>Methods were also defined to clean each file, which included dropping duplicate and empty rows, 
+											dropping or merging columns, standardising units, and using regex to ensure the correct format of numbers, dates 
+											and email addresses.
+										</p><br>
+										<p><a class="image"><img src="images/project-sql-upload2.jpg" alt="" style="width:680px;"/></a><br>
+											<span style="font-size:10pt"><i>Checking date format with regex</i></span></p><br>
+										<h1>2.4. Uploading and querying</h1><br>
+										<p>A database was compiled from the dataframes by defining primary and foreign keys, and the database was uploaded 
+											to PostgreSQL locally. Then SQL queries were run using SQLAlchemy in Python to gain insights on sales and revenue 
+											per store and per country.</p><br>
+										<p><a class="image"><img src="images/project-sql-upload3.jpg" alt="" /></a><br>
+										<span style="font-size:10pt"><i>Defining primary and foreign keys for database</i></span></p><br>
+										<p><a class="image"><img src="images/project-sql-upload4.jpg" alt="" /></a><br>
+										<span style="font-size:10pt"><i>Example SQL query</i></span></p><br>
+									</section>									
+									<section>
+										<header>
+											<h3>3. Results and insights</h3>
+										</header>
+										<p>success of database, latency?? 
+											scalability: extract and clean new data with cleaning functions and append to database
+											</p><br>
+										<footer>
+											<br><br>
+											<a href="index.html" class="button">Home</a>
+										</footer>
+									</section>
+								</article>
+							</div>
+							<div class="col-4 col-12-mobile" id="sidebar">
+								<hr class="first" />
+								<section>
+									<p>
+										Explore the code for this project:
+									</p>
+									<header>
+										<h3><a href="https://github.com/dpw257/aicore-project2-multinational" class="icon brands fa-github">   GitHub repository</a></h3>
+									</header>
+
+								</section>
+								<hr />
+								<section>
+									<header>
+										<h3><a>Other projects</a></h3>
+									</header>
+
+									<div class="row gtr-50">
+										<div class="col-4">
+											<a href="project-product-recommend.html" class="image fit"><img src="images/pic12.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-product-recommend.html">Product recommendation system</a></h4>
+											<p>
+												BeautifulSoup, product clustering, EDA, dynamic pricing.
+											</p>
+										</div>
+										<div class="col-4">
+											<a href="project-aws-pipeline.html" class="image fit"><img src="images/pic10.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-aws-pipeline.html">AWS data pipeline for user data</a></h4>
+											<p>
+												Batch and stream processing,<br>AWS Kinesis, S3, Databricks, Airflow.
+											</p>
+										</div>
+										<!--  <div class="col-4">
+											<a href="project-sql-upload-data.html" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-sql-upload-data.html">PostgreSQL database for sales</a></h4>
+											<p>
+												Data extracted from AWS RDS database, cleaned and queried.
+											</p>
+										</div>  -->
+
+										<div class="col-4">
+											<a href="project-pos-tagger.html" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-pos-tagger.html">POS tagger for minority language</a></h4>
+											<p>
+												Based on hidden Markov model with Viterbi algorithm.</p>
+											</p>
+										</div>
+										<!--<div class="col-4">
+											<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4>Malesuada fermentum</h4>
+											<p>
+												Amet nullam fringilla nibh nulla convallis tique ante proin.
+											</p>
+										</div>-->
+									</div>
+								</section>
+								<hr />
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Contact -->
+
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>AWS Data Pipeline - Data Engineering</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="right-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Data Engineering</a></h1>
+							</header>
+						</div>
+
+
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-8 col-12-mobile" id="content">
+								<article id="main">
+									<header>
+										<h2>AWS Data Pipeline for User Upload Data</h2>
+										<p>
+											<br>
+										</p>
+									</header>
+									<p><b><i>
+										A data pipeline was created based on the model currently used by Pinterest, the leading image sharing platform, which 
+										has 500 million active users who generate billions of data points daily. 
+									</b></p></i>
+									<p><b><i>
+										The company continually trials improvements to its service, so monitoring site traffic in real-time is vital for quick 
+										decision-making and problem-solving. User upload data must also be stored so that it can be retrieved 
+										and processed at any time.
+									</b></p></i>
+									<p><b><i>
+										To handle such large amounts of data, Pinterest developed a powerful experimentation pipeline capable of processing 
+										batch and stream data in parallel, as well as storing historical data and scheduling daily batch tasks.
+									</b></p></i>
+									<section>
+										<header>
+											<h3>1. Project objectives</h3>
+										</header>
+										<p>
+											Create an end-to-end data pipeline based on the Pinterest model using the AWS Cloud that will:<br>
+											&nbsp; &#x25cf; &nbsp; Employ a Lamda architecture for batch and streaming data.<br>
+											&nbsp; &#x25cf; &nbsp; Send data to Databricks for analysis and to be saved as a Delta table.<br>
+											&nbsp; &#x25cf; &nbsp; Store batch data in AWS S3 bucket.<br>
+											&nbsp; &#x25cf; &nbsp; Schedule an Airflow DAG to trigger a Databricks notebook to run daily.<br>
+											</p><br>
+									</section>
+									
+									<section>
+										<header>
+										<h3>2. Pipeline design</h3><br>
+										</header>
+										<h1>2.1. User uploads</h1><br>
+										<p>To represent the POST requests sent by users to the RESTful API, a RDS database with three tables 
+											was stored on the AWS cloud.</p><br>
+
+										<h1>2.2. Stream and batch processing</h1><br>
+										<p>Stream: coming in in real time, monitor, check traffic incl. for problems i.e. massive drops
+											Stream part: API Gateway RESTful API > Kinesis > Databricks + PySpark to process + save in a Delta table > [Dashboard]
+											Streamed data in real-time using 3 AWS Kinesis data streams & performed analysis using Spark Databricks.</p><br>
+										<p><a class="image"><img src="images/project-aws-pipeline1.jpg" alt="" style="width:720px;"/></a><br>
+										<span style="font-size:10pt"><i>Systems diagram of the data pipeline</i></span></p><br>
+										<p>Batch part: [BACKGROUND: VPC (containter for resources; ~ environment) > EC2 instance (client 
+											for the Kafka cluster)] API Gateway RESTful API > Kafka Rest proxy + Kafka-connect s3 > Kafka cluster??? =? 
+											send data to 3 different Kafka topics on MSK.</p>
+										<p>Distributed batch data from MSK to an AWS S3 data lake using MSK Connect plugin-connector pair.</p><br>
+										<p><a class="image"><img src="images/project-aws-pipeline2.jpg" alt="" style="width:700px;"/></a><br>
+										<span style="font-size:10pt"><i>Configuration of MSK connector from cluster to S3 bucket</i></span></p><br>
+										
+										<h1>2.3. Daily batch workloads</h1><br>
+										<p>Automated Databricks Workloads to run daily using custom made DAG scripts on MWAA.</p><br>
+										<p><a class="image"><img src="images/project-aws-pipeline3.jpg" alt="" style="width:700px;"/></a><br>
+										<span style="font-size:10pt"><i>DAG running on Amazon Managed Apache Airflow</i></span></p><br>
+
+										<h1>2.4. Transforming, cleaning and querying data</h1><br>
+										<p>Created custom Spark transformations on Databricks, to clean and aggregate data stored in the S3 data lake.</p><br>
+										<p><a class="image"><img src="images/project-aws-pipeline4.jpg" alt="" style="width:700px;"/></a><br>
+										<span style="font-size:10pt"><i>Spark SQL query run in Databricks</i></span></p><br>
+									</section>
+									<section>
+										<header>
+											<h3>3. Results and insights</h3>
+										</header>
+										<p>
+											Success of DAG, streaming and batch sent to Databricks.
+											Key statistics, tables, charts describing the data: 30k rows, successful DAG, user insights
+											 - or -
+											# Recommendations: Scalability with AWS VPC and S3 buckets, Dashboard with AWS Redshift???? or alternative 
+										</p>
+									</section>
+									
+									<section>
+										<footer>
+											<br><br>
+											<a href="index.html" class="button">Home</a>
+										</footer>
+									</section>
+								</article>
+							</div>
+							<div class="col-4 col-12-mobile" id="sidebar">
+								<hr class="first" />
+								<section>
+									<p>
+										Explore the code for this project:
+									</p>
+									<header>
+										<h3><a href="https://github.com/dpw257/aicore-project3-pintrest" class="icon brands fa-github">   GitHub repository</a></h3>
+									</header>
+
+								</section>
+								<hr />
+								<section>
+									<header>
+										<h3><a>Other projects</a></h3>
+									</header>
+
+									<div class="row gtr-50">
+										<!--  <div class="col-4">
+											<a href="project-aws-pipeline.html" class="image fit"><img src="images/pic10.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-aws-pipeline.html">AWS data pipeline for user data</a></h4>
+											<p>
+												Batch and stream processing,<br>AWS Kinesis, S3, Databricks, Airflow.
+											</p>
+										</div>  -->
+										<div class="col-4">
+											<a href="project-sql-upload-data.html" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-sql-upload-data.html">PostgreSQL database for sales</a></h4>
+											<p>
+												Data extracted from RDS database and RESTful API, cleaned, SQL.
+											</p>
+										</div>
+										<div class="col-4">
+											<a href="project-product-recommend.html" class="image fit"><img src="images/pic12.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-product-recommend.html">Product recommendation system</a></h4>
+											<p>
+												BeautifulSoup, product clustering, EDA, dynamic pricing.
+											</p>
+										</div>
+										<div class="col-4">
+											<a href="project-pos-tagger.html" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-pos-tagger.html">POS tagger for minority language</a></h4>
+											<p>
+												Based on hidden Markov model with Viterbi algorithm.</p>
+											</p>
+										</div>
+										<!--<div class="col-4">
+											<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4>Malesuada fermentum</h4>
+											<p>
+												Amet nullam fringilla nibh nulla convallis tique ante proin.
+											</p>
+										</div>-->
+									</div>
+								</section>
+								<hr />
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Contact -->
+
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

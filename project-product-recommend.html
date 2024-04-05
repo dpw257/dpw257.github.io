@@ -1,0 +1,242 @@
+<!DOCTYPE HTML>
+<!--
+	Helios by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Product Recommendation - Data Analytics</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="right-sidebar is-preload">
+		<div id="page-wrapper">
+
+			<!-- Header -->
+				<div id="header">
+
+					<!-- Inner -->
+						<div class="inner">
+							<header>
+								<h1><a href="index.html" id="logo">Data Analytics</a></h1>
+							</header>
+						</div>
+
+
+
+				</div>
+
+			<!-- Main -->
+				<div class="wrapper style1">
+
+					<div class="container">
+						<div class="row gtr-200">
+							<div class="col-8 col-12-mobile" id="content">
+								<article id="main">
+									<header>
+										<h2>Customer Segmentation and Product Recommendation with Dynamic Pricing</h2>
+										<p>
+
+										</p>
+									</header>
+									<p><b><i>
+										Instead of sending general marketing materials to all its customers, a company would like to understand the different types 
+										of customer it has and target them with offers tailored to their specific purchasing behavior and value to the company. In particular, more 
+										resources will be spent on high value customers and customer with untapped revenue potential.
+									</b></p></i>
+									<p><b><i>
+										Using a customer's own purchase history to recommend products increases the relevance of the suggestion for the customer, which 
+										improves sale success. Prices can also be adjusted dynamically based on the popularity of the product to maximise profit 
+										by linking price to customers' willingness to pay.
+									</b></p></i>
+									<section>
+										<header>
+											<h3>1. Project objectives</h3>
+										</header>
+										<p>
+											&nbsp; &#x25cf; &nbsp; Segment customers according to recency, frequency and monetary value of their purchases (RFM scores).<br>
+											&nbsp; &#x25cf; &nbsp; Cluster products using TF-IDF of product descriptions and recommend product for each customer.<br>
+											&nbsp; &#x25cf; &nbsp; Scrape and clean competitor prices from price comparison site.<br>
+											&nbsp; &#x25cf; &nbsp; Assess success rate with different demographics and suggest improvements.<br>
+											&nbsp; &#x25cf; &nbsp; Set price for recommended products based on competitor pricing, cost, sales history and quantity in stock.<br>
+										</p><br>
+									</section>
+									<section>
+										<header>
+											<h3>2. Methodology</h3>
+										</header>
+										<h1>2.1. Data collection and preprocessing</h1><br>
+										<p>The customer dataset was taken from Kaggle, containing data on customer demographics and purchase value. The product 
+											dataset was scraped from a price comparison site using BeautifulSoup. Its data includes product descriptions and competitors'
+											sale prices.<br><br>
+											Duplicate products, products with descriptions in languages other than English, and products lacking competitor 
+											price data were removed. Each customer was randomly assigned products for their purchase history.
+										</p><br>
+										<h1>2.2. Customer segmentation</h1><br>
+										<p>Customers were segmented using RFM scores, based on the frequency (total number) of purchases, the recency of the last purchase 
+											in the past 36 months, and the total monetary of value to date. The values for recency, frequency, and monetary value were scored 
+											1 to 3 from lowest to highest and concatenated to give 27 three-digit RFM scores from the lowest score, 111, to the highest, 333.</p><br>
+										<p><a class="image"><img src="images/project-product-recommend5.jpg" alt="" style="width:650px;"/></a><br>
+										<span style="font-size:10pt"><i>Recency, Frequency, Monetary values converted to RFM scores.</i></span></p><br><p>Five customer segments were created based on customer value to the company, and the 27 RFM scores were distributed between 
+											these segments. Separate marketing approaches can be developed for each segment.</p><br>
+										<p><a class="image"><img src="images/project-product-recommend1.jpg" alt="" style="width:450px;height:330px;"/></a><br>
+										<span style="font-size:10pt"><i>Customers segmented on value (RFM scores)</i></span></p><br>
+										<h1>2.3. Product clustering and recommendation system</h1><br>
+										<p>Product descriptions were tokenised and the TF-IDF score (term frequency-inverse document frequency) were calculated.
+											Principal component analysis (PCA) was conducted on SOMETHING[??], and PC1 and PC2 were plotted against each other.
+											The distance between products was calculated based on this SOMEHOW[??].
+										</p>
+										<p>Several products were selected for each customer based on the clusters, one to be sold individually and one to be sold as 
+											part of a bundle with a cheaper filler product.</p><br>
+										<p><a class="image"><img src="images/project-product-recommend2.jpg" alt="" style="width:450px;height:340px;"/></a><br>
+										<span style="font-size:10pt"><i>Products clustered by TD-IDF of descriptions</i></span></p><br>
+										<h1>2.4. Dynamic pricing</h1><br>
+										<p>A new price was set for each recommened product, based on recent sales, number of items in stock, cost and competitor prices.		
+										</p><br>
+										<h1>2.5. Limitations</h1><br>
+										<p>The descriptions are somewhat repetitive; products from distinct categories are often similarly worded. For this reason, 
+											stopwords were removed, since they could influence the TF-IDF values. For this task, removing context is not expected 
+											to create ambiguity. Removing stopwords reduces the number of features, so this should also lower computational cost. </p><br>
+									</section>
+									<section>
+										<header>
+										<h3>3. Results</h3>
+										</header>
+										<p><a class="image"><img src="images/project-product-recommend3.jpg" alt="" style="width:450px;"/></a><br>
+										<span style="font-size:10pt"><i>Example of product and price selected for recommendation</i></span></p><br>
+										<p>
+											Key statistics, tables, charts describing the data<br>
+											What do they tell us about the data and the underlying patterns? How will this determine further model development?
+										</p><br>
+										<p><a class="image"><img src="images/project-product-recommend4.jpg" alt="" style="width:325px;"/></a><br>
+										<span style="font-size:10pt"><i>Response rate of different demographics</i></span></p><br>
+	
+									</section>
+									
+									<section>
+										<header>
+											<h3>4. Insights</h3>
+										</header>
+										<p>Continual improvement is achieved by monitoring success  
+										rates and adjusting the marketing approach according to the insights gained.<br>
+										A/B testing on prices, 
+										</p><br>
+										<footer>
+											<br><br>
+											<a href="index.html" class="button">Home</a>
+										</footer>
+									</section>
+								</article>
+							</div>
+							<div class="col-4 col-12-mobile" id="sidebar">
+								<hr class="first" />
+								<section>
+									<p>
+										Explore the code for this project:
+									</p>
+									<header>
+										<h3><a href="#" class="icon brands fa-github">   GitHub repository</a></h3>
+									</header>
+
+								</section>
+								<hr />
+								<section>
+									<header>
+										<h3><a>Other projects</a></h3>
+									</header>
+									<div class="row gtr-50">
+										<div class="col-4">
+											<a href="project-pos-tagger.html" class="image fit"><img src="images/pic13.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-pos-tagger.html">POS tagger for minority language</a></h4>
+											<p>
+												Based on hidden Markov model with Viterbi algorithm.</p>
+											</p>
+										</div>
+										<div class="col-4">
+											<a href="project-aws-pipeline.html" class="image fit"><img src="images/pic10.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-aws-pipeline.html">AWS data pipeline for user data</a></h4>
+											<p>
+												Batch and stream processing,<br>AWS Kinesis, S3, Databricks, Airflow.
+											</p>
+										</div>
+										<div class="col-4">
+											<a href="project-sql-upload-data.html" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-sql-upload-data.html">PostgreSQL database for sales</a></h4>
+											<p>
+												Data extracted from RDS database and RESTful API, cleaned, SQL.
+											</p>
+										</div>
+										<!--  <div class="col-4">
+											<a href="project-product-recommend.html" class="image fit"><img src="images/pic12.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4><a href="project-product-recommend.html">Product recommendation</a></h4>
+											<p>
+												Data scraped with BeautifulSoup, product clustering, dynamic pricing.
+											</p>
+										</div>  -->
+
+										<!--<div class="col-4">
+											<a href="#" class="image fit"><img src="images/pic14.jpg" alt="" /></a>
+										</div>
+										<div class="col-8">
+											<h4>Malesuada fermentum</h4>
+											<p>
+												Amet nullam fringilla nibh nulla convallis tique ante proin.
+											</p>
+										</div>-->
+									</div>
+								</section>
+								<hr />
+							</div>
+						</div>
+						
+					</div>
+
+				</div>
+
+			<!-- Footer -->
+				<div id="footer">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+
+								<!-- Contact -->
+
+
+								<!-- Copyright -->
+									<div class="copyright">
+										<ul class="menu">
+											<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+										</ul>
+									</div>
+
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+		</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
