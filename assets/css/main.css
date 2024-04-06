@@ -2553,7 +2553,7 @@ input, select, textarea {
 			}
 
 			.carousel .forward:hover:before, .carousel .backward:hover:before {
-				background-color: rgba(239, 131, 118, 0.75);
+				background-color: rgba(118, 144, 239, 0.811);
 			}
 
 		.carousel .forward {
@@ -2607,7 +2607,7 @@ input, select, textarea {
 		}
 
 			.carousel article.loading {
-				opacity: 0;
+				opacity: 100;
 			}
 
 			.carousel article .image {
