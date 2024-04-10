@@ -63,7 +63,7 @@
 											Create an end-to-end data pipeline based on the Pinterest model using the AWS Cloud that will:<br>
 											&nbsp; &#x25cf; &nbsp; Employ a Lamda architecture for batch and streaming data.<br>
 											&nbsp; &#x25cf; &nbsp; Send data to Databricks for analysis and to be saved as a Delta table.<br>
-											&nbsp; &#x25cf; &nbsp; Store batch data in AWS S3 bucket.<br>
+											&nbsp; &#x25cf; &nbsp; Store batch data in an AWS S3 bucket.<br>
 											&nbsp; &#x25cf; &nbsp; Schedule an Airflow DAG to trigger a Databricks notebook to run daily.<br>
 											</p><br>
 									</section>
@@ -73,28 +73,28 @@
 										<h3>2. Pipeline design</h3><br>
 										</header>
 										<h1>2.1. User uploads</h1><br>
-										<p>To represent the POST requests sent by users to the RESTful API, a RDS database with three tables 
-											was stored on the AWS cloud.</p><br>
+										<p>In the original Pinterest pipeline, posts are uploaded by users to a RESTful API. To represent the POST requests sent by users, 
+											a RDS database with three tables of data (post data, geolocation data, user data) was stored on the AWS cloud.</p><br>
 
-										<h1>2.2. Stream and batch processing</h1><br>
-										<p>Stream: coming in in real time, monitor, check traffic incl. for problems i.e. massive drops
-											Stream part: API Gateway RESTful API > Kinesis > Databricks + PySpark to process + save in a Delta table > [Dashboard]
-											Streamed data in real-time using 3 AWS Kinesis data streams & performed analysis using Spark Databricks.</p><br>
+										<h1>2.2. Stream processing</h1><br>
+										<p>The RESTful API was configured to allow streams to be created in AWS Kinesis and records to be added to the streams. 
+											Three streams were then created, one for each data table. Requests were sent to the API using a Python script, to add 
+											records from the three Pinterest tables to their corresponding Kinesis streams.</p><br>
 										<p><a class="image"><img src="images/project-aws-pipeline1.jpg" alt="" style="width:720px;"/></a><br>
 										<span style="font-size:10pt"><i>Systems diagram of the data pipeline</i></span></p><br>
-										<p>Batch part: [BACKGROUND: VPC (container for resources; ~ environment) > EC2 instance (client 
-											for the Kafka cluster)] API Gateway RESTful API > Kafka Rest proxy + Kafka-connect s3 > Kafka cluster??? =? 
-											send data to 3 different Kafka topics on MSK.</p>
-										<p>Distributed batch data from MSK to an AWS S3 data lake using MSK Connect plugin-connector pair.</p><br>
+										<h1>2.3. Batch processing</h1><br>
+										<p>An EC2 instance was created on the AWS Cloud to host the client for the MSK cluster. A Kafka REST Proxy was created on the 
+											AWS API Gateway console and set up on the EC2 instance, enabling data to be sent to the MSK cluster and saved in three topics 
+											in an S3 bucket using a Python script and an MSK plugin-connector pair.</p>
 										<p><a class="image"><img src="images/project-aws-pipeline2.jpg" alt="" style="width:700px;"/></a><br>
 										<span style="font-size:10pt"><i>Configuration of MSK connector from cluster to S3 bucket</i></span></p><br>
 										
-										<h1>2.3. Daily batch workloads</h1><br>
+										<h1>2.4. Daily batch workloads</h1><br>
 										<p>Automated Databricks Workloads to run daily using custom made DAG scripts on MWAA.</p><br>
 										<p><a class="image"><img src="images/project-aws-pipeline3.jpg" alt="" style="width:700px;"/></a><br>
 										<span style="font-size:10pt"><i>DAG running on Amazon Managed Apache Airflow</i></span></p><br>
 
-										<h1>2.4. Transforming, cleaning and querying data</h1><br>
+										<h1>2.5. Transforming, cleaning and querying data</h1><br>
 										<p>Created custom Spark transformations on Databricks, to clean and aggregate data stored in the S3 data lake.</p><br>
 										<p><a class="image"><img src="images/project-aws-pipeline4.jpg" alt="" style="width:700px;"/></a><br>
 										<span style="font-size:10pt"><i>Spark SQL query run in Databricks</i></span></p><br>
@@ -204,7 +204,7 @@
 								<!-- Copyright -->
 									<div class="copyright">
 										<ul class="menu">
-											<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+											<li>&copy; Daniel White. All rights reserved.</li><li>Design: HTML5 UP</li>
 										</ul>
 									</div>
 
