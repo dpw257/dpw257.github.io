@@ -94,14 +94,15 @@
 										<span style="font-size:10pt"><i>Configuration of MSK connector from cluster to S3 bucket</i></span></p><br>
 										
 										<h1>2.4. Daily batch workloads</h1><br>
-										<p>Automated Databricks Workloads to run daily using custom made DAG scripts on MWAA.</p><br>
+										<p>To automate the process of processing batch data, a Databricks notebook was orchestrated to run daily using 
+											a DAG script uploaded to MWAA (Airflow).</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-aws-pipeline3.jpg" alt="" style="width:700px;">
 										  </div>
 										<span style="font-size:10pt"><i>DAG running on Amazon Managed Apache Airflow</i></span></p><br>
 										
 										<h1>2.5. Transforming, cleaning and querying data</h1><br>
-										<p>Created custom Spark transformations on Databricks, to clean and aggregate data stored in the S3 data lake.</p><br>
+										<p>On the Databricks platform, Spark was used to transform, clean, aggregate and analyse the data stored in the S3 data lake.</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-aws-pipeline4.jpg" alt="" style="width:700px;">
 										  </div>
@@ -112,10 +113,11 @@
 											<h3>3. Results and insights</h3>
 										</header>
 										<p>
-											Success of DAG, streaming and batch sent to Databricks.
-											Key statistics, tables, charts describing the data: 30k rows, successful DAG, user insights
-											 - or -
-											# Recommendations: Scalability with AWS VPC and S3 buckets, Dashboard with AWS Redshift???? or alternative 
+											30,000 rows of streaming and batch data were sent to Databricks to be analysed, with the DAG script successfully 
+											ochestrating daily processing.<br><br>
+											The data pipeline offers good scalability with the AWS ecosystem providing storage and compute capabilities to meet 
+											demand as needed.<br><br>
+											A data dashboard could be added as a final stage to provide analysts with a real-time overview of user traffic.
 										</p>
 									</section>
 									
