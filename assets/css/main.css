@@ -2756,7 +2756,7 @@ input, select, textarea {
 		display: none;
 	}
 
-	@media screen and (max-width: 736px) {
+	@media screen and (max-width: 36px) {
 
 		/* Basic */
 
