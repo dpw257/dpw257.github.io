@@ -189,7 +189,7 @@ input, select, textarea {
 	}
 
 	p {
-		text-align: justify;
+		text-align: left;
 	}
 
 	br.clear {
@@ -2588,7 +2588,7 @@ input, select, textarea {
 			white-space: nowrap;
 			position: relative;
 			-webkit-overflow-scrolling: touch;
-			padding: 0 2em 0 2em;
+			padding: 0em 2em 0 2em;
 		}
 
 		.carousel article {
@@ -2599,7 +2599,7 @@ input, select, textarea {
 			padding: 0 1em 3em 1em;
 			margin: 0 2em 0 0;
 			white-space: normal;
-			opacity: 1.0;
+			opacity: 1;
 			-moz-transition: opacity 0.75s ease-in-out;
 			-webkit-transition: opacity 0.75s ease-in-out;
 			-ms-transition: opacity 0.75s ease-in-out;
@@ -2743,7 +2743,7 @@ input, select, textarea {
 		display: none;
 	}
 
-	@media screen and (max-width: 736px) {
+	@media screen and (max-width: 36px) {
 
 		/* Basic */
 
