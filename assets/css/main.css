@@ -83,7 +83,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #f0f4f4;
+		background: #ffffff;
 		color: #171717; <!--<5b5b5b>, 2f2e2e, -->
 		font-size: 15pt;
 		line-height: 1.85em;
@@ -2756,13 +2756,18 @@ input, select, textarea {
 				line-height: 1.5em;
 			}
 
-			h2 {
-				font-size: 1.75em;
-			}
-
-			h3 {
+			h1 {
 				font-size: 1.25em;
 			}
+		
+			h2 {
+				font-size: 2.85em;
+			}
+		
+			h3 {
+				font-size: 1.45em;
+			}
+
 
 			hr {
 				top: 3em;
