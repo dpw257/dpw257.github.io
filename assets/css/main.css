@@ -2566,7 +2566,7 @@ input, select, textarea {
 			}
 
 			.carousel .forward:hover:before, .carousel .backward:hover:before {
-				background-color: rgba(118, 144, 239, 0.811);
+				background-color: rgba(223, 223, 223, 0.811);
 			}
 
 		.carousel .forward {
