@@ -43,9 +43,16 @@
 										</p>
 									</header>
 									<p><b><i>
-										A multinational company stored its customer, sales and revenue data in different locations and 
-										formats. The data was extracted, cleaned and converted into a centralised database to enable easy access 
-										and allow the company to make better, data-driven decisions.
+										A multinational company previously stored various categories of customer, sales and revenue data on 
+										different platforms and in different file formats. 
+									</b></p></i>
+									<p><b><i>
+										To enable easy access and allow the company to make better data-driven decisions, code was created 
+										to extract the data from the various sources, clean it and convert it into a centralised database. 
+									</b></p></i>
+									<p><b><i>
+										Acting as a single source of truth, business queries were then able to be run across the entirety 
+										of the company's data.
 									</b></p></i>
 									<section>
 									<header>
@@ -62,8 +69,8 @@
 										<h3>2. Methodology</h3>
 										</header>
 										<h1>2.1. Dataset</h1><br>
-										<p>Six tables with data on customers, stores, products, orders, dates, and credit cards were accessed 
-											from an RDS database, an API and an S3 bucket on AWS Cloud, as well as via direct links to files. </p><br>
+										<p>Data was extracted from an RDS database, an API and an S3 bucket on AWS Cloud, as well as via direct links to files, 
+											generating six tables with data on customers, stores, products, orders, dates, and credit cards. </p><br>
 										<h1>2.2. Extracting</h1><br>
 										<p>A class of methods was defined to access the AWS server and extract each file type as a Pandas dataframe. 
 											Access credentials were read securely from a .yaml file. The S3 bucket was accessed using boto3, and the PDF was 
@@ -75,7 +82,7 @@
 										<span style="font-size:10pt"><i>Method for connecting to AWS RDS database</i></span></p><br>
 										<h1>2.3. Cleaning</h1><br>
 										<p>Methods were also defined to clean each file, which included dropping duplicate and empty rows, 
-											dropping or merging columns, standardising units, and using regex to ensure the correct format of numbers, dates 
+											dropping or merging columns, standardising units of product quantities and using regex to ensure the correct format of numbers, dates 
 											and email addresses.
 										</p><br>
 										<p><div class="scroll-container">
@@ -84,12 +91,13 @@
 											<span style="font-size:10pt"><i>Checking date format with regex</i></span></p><br>
 										<h1>2.4. Uploading and querying</h1><br>
 										<p>A database was compiled from the dataframes by defining primary and foreign keys, and the database was uploaded 
-											to PostgreSQL locally. Then SQL queries were run using SQLAlchemy in Python to gain insights on sales and revenue 
-											per store and per country.</p><br>
+											to PostgreSQL locally.</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-sql-upload3.jpg" alt="" style="width:790px;">
 										  </div>
 										<span style="font-size:10pt"><i>Defining primary and foreign keys for database</i></span></p><br>
+										<p>Then SQL queries were run using SQLAlchemy in Python to gain insights on sales and revenue 
+											per store and per country.</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-sql-upload4.jpg" alt="" style="width:790px;">
 										  </div>
