@@ -107,10 +107,30 @@
 										<header>
 											<h3>3. Results and insights</h3>
 										</header>
-										<p>The database achieved good latency of 0.01, showcasing its efficiency. The system is easy to scale since the 
-											functions designed for data extraction and cleaning can easily accommodate new data, which can then be added to the 
-											database for further analysis.
-											</p><br>
+										<h1>3.1 Data quality</h1>
+										<p>
+										The database achieved good latency of 0.01, showcasing its efficiency. The system is easy 
+											to scale since the functions designed for data extraction and cleaning can easily 
+											accommodate new data, which can then be added to the database for further analysis.
+										<br><br>
+										During the cleaning process, it was discovered that 0.2% of rows contained no data, so were 
+											removed. The 0.3% of rows containing incorrectly formatted email addresses were standardised 
+											to a consistent format, and all phone numbers were also standardised,  ensuring the 
+											accuracy of the subsequent analyses.
+										</p>
+										<h1>3.2 Insights from queries</h1>
+										<p>
+										Sales start low in January and steadily build throughout the year, peaking in December, highlighting 
+											the need for preparing for increased sales in Q4. 
+										<br><br>
+										The average speed of sales processing has remained consistent across years, indicating a stable 
+											and efficient sales process. This consistency suggests that the company’s sales systems 
+											and workflows are effectively optimized, with no significant operational delays. 
+										<br><br>
+										The dataset could be used to determine the most profitable store locations across key markets 
+											when planning the opening of new stores.
+										</p>
+
 										<footer>
 											<br><br>
 											<a href="https://dpw257.github.io" class="button">Home</a>
