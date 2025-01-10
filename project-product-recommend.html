@@ -48,14 +48,13 @@
 										</p>
 									</header>
 									<p><b><i>
-										Instead of sending general marketing materials to all its customers, a company would like to understand the different types 
-										of customer it has and target them with offers tailored to their specific purchasing behaviour and value to the company. In particular, more 
-										resources will be spent on high value customers and customer with untapped revenue potential.
+										An electronics company decided to target existing customers with suggested products and discounts tailored to their purchasing 
+										behaviour and overall value to the company, in order to maximise customer loyalty and increase revenue.
 									</b></p></i>
 									<p><b><i>
-										Using a customer's own purchase history to recommend products increases the relevance of the suggestion for the customer, which 
-										improves sale success. Prices can also be adjusted dynamically based on the popularity of the product to maximise profit 
-										by linking price to customers' willingness to pay.
+										Customers were segmented based on the value and recency of purchases, and a set recommended products were found for each customer. 
+										Prices of the entire product range were updated dynamically according to recent sales trends, quantity in stock and competitor 
+										benchmarking, before adding personalised discounts according to each customer's value segment.
 									</b></p></i>
 									<section>
 										<header>
@@ -66,7 +65,8 @@
 											&nbsp; &#x25cf; &nbsp; Cluster products using TF-IDF of product descriptions and recommend product for each customer.<br>
 											&nbsp; &#x25cf; &nbsp; Scrape and clean competitor prices from price comparison site.<br>
 											&nbsp; &#x25cf; &nbsp; Assess success rate with different demographics and suggest improvements.<br>
-											&nbsp; &#x25cf; &nbsp; Set price for recommended products based on competitor pricing, cost, sales history and quantity in stock.<br>
+											&nbsp; &#x25cf; &nbsp; Set prices for recommended products based on competitor pricing, cost, sales history and quantity in stock 
+											and apply personalised discounts.<br>
 										</p><br>
 									</section>
 									<section>
@@ -74,53 +74,63 @@
 											<h3>2. Methodology</h3>
 										</header>
 										<h1>2.1. Data collection and preprocessing</h1><br>
-										<p>The customer dataset was taken from Kaggle, containing data on customer demographics and purchase value. The product 
-											dataset was scraped from a price comparison site using BeautifulSoup. Its data includes product descriptions and competitors'
-											sale prices.<br><br>
-											Duplicate products, products with descriptions in languages other than English, and products lacking competitor 
-											price data were removed. Each customer was randomly assigned products for their purchase history.
+										<p>The customer dataset contains basic demographics data, a record of recently purchased products and the recency, frequency 
+											and monetary value of purchases (RFM). 
+											<br><br>
+											The product dataset was scraped from a price comparison site using BeautifulSoup. Its data includes product descriptions 
+											and the current sale prices of competitors.
+											<br><br>
+											During the cleaning process, duplicate products, products with descriptions in languages other than English, and products 
+											lacking competitor price data were removed. Each customer was randomly assigned products for their purchase history.
 										</p><br>
 										<h1>2.2. Customer segmentation</h1><br>
 										<p>Customers were segmented using RFM scores, based on the frequency (total number) of purchases, the recency of the last purchase 
-											in the past 36 months, and the total monetary of value to date. The values for recency, frequency, and monetary value were scored 
-											1 to 3 from lowest to highest and concatenated to give 27 three-digit RFM scores from the lowest score, 111, to the highest, 333.</p><br>
+											in the past 36 months, and the total monetary of value to date. Each customer's values for recency, frequency, and monetary 
+											value were converted to single digits from 1 to 3,  and these three digits were concatenated to give a three-digit RFM score 
+											denoting the customers overall value. There were 27 possible RFM scores in total, from the lowest score of 111, to the highest, 333.</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-product-recommend5.jpg" alt="" style="width:650px;">
 										  </div>
-										<span style="font-size:10pt"><i>Recency, Frequency, Monetary values converted to RFM scores.</i></span></p>
+										<span style="font-size:10pt"><i>Figure 1: Recency, Frequency, Monetary values converted to RFM scores.</i></span></p>
 										<br>
-										<p>Five customer segments were created based on customer value to the company, and the 27 RFM scores were distributed between 
-											these segments. Separate marketing approaches can be developed for each segment.</p><br>
+										<p>The 27 RFM scores were divided into five groups to create five customer segments based on customer value to the company, allowing 
+											separate discounts to be defined for each segment.</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-product-recommend1.jpg" alt="" style="width:450px;">
 										  </div>
-										<span style="font-size:10pt"><i>Customers segmented on value (RFM scores)</i></span></p><br>
+										<span style="font-size:10pt"><i>Figure 2: Customers segmented on value (RFM scores)</i></span></p><br>
 										<h1>2.3. Product clustering and recommendation system</h1><br>
-										<p>Product descriptions were tokenized, and the TF-IDF score (term frequency-inverse document frequency) was calculated. 
-											Principal component analysis (PCA) was conducted on the TF-IDF scores, and PC1 and PC2 were plotted against each other. 
-											The distance between products was calculated based on this representation.
+										<p>The similarity of products was determined by analysing the text of each product's description.  Each text was tokenised, 
+											stopwords were removed and a TF-IDF score (term frequency-inverse document frequency) was calculated and stored as 
+											a vector.  
 										</p>
-										<p>Several products were selected for each customer based on the clusters, one to be sold individually and one to be sold as 
-											part of a bundle with a cheaper filler product.</p><br>
+										<p>The cosine distance between each vectors was calculated (figure 3) to determine the most similar products to each 
+											customers most recently purchased product. Several products were selected for each customer to be sold individually 
+											and as part of a bundle.</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-product-recommend2.jpg" alt="" style="width:670px;">
 										  </div>
-										<span style="font-size:10pt"><i>Products clustered by TD-IDF of descriptions</i></span></p><br>
+										<span style="font-size:10pt"><i>Figure 3: Products clustered by TD-IDF of descriptions</i></span></p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-product-recommend6.jpg" alt="" style="width:670px;">
 										  </div>
-										<span style="font-size:10pt"><i>Products recommended for each previous purchase</i></span></p><br>
+										<span style="font-size:10pt"><i>Figure 4: Products recommended for each previous purchase</i></span></p><br>
 										<h1>2.4. Dynamic pricing</h1><br>
-										<p>A new price was set for each recommended product, based on recent sales, number of items in stock, cost and competitor prices.		
+										<p>The prices of the entire product list was updated dynamically based on current stock levels and recent upward or downward 
+											trends in sales to encourage sales of slow-moving products and maximise revenue from popular products. To ensure all 
+											prices remain below the most expensive competitor, a further reduction was applied to products exceeding this benchmark. 
+										</p>
+										<p>Personalised discounts were applied for each customer segment to reward existing customers and encourage lost high-value 
+											customers to return. A check was run to ensure all prices remain above a minimum profit margin of 10%.
 										</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-product-recommend7.jpg" alt="" style="width:670px;">
 										  </div>
-										<span style="font-size:10pt"><i>Dynamically defined new standard prices and personalised discount prices</i></span></p><br>
+										<span style="font-size:10pt"><i>Figure 5: Dynamically defined new standard prices and personalised discount prices</i></span></p><br>
 										<h1>2.5. Limitations</h1><br>
-										<p>The descriptions are somewhat repetitive; products from distinct categories are often similarly worded. For this reason, 
-											stopwords were removed, since they could influence the TF-IDF values. For this task, removing context is not expected 
-											to create ambiguity. Removing stopwords reduces the number of features, so this should also lower computational cost. </p><br>
+										<p>Stopwords and other common words were removed from product descriptions, since they could influence the TF-IDF values. 
+											For this task, removing this context does not create significant ambiguity. In addition, removing stopwords reduces the 
+											number of features, which contributes to a reduction in computational cost.</p><br>
 									</section>
 									<section>
 										<header>
@@ -129,18 +139,26 @@
 										<p><div class="scroll-container">
 											<img src="images/project-product-recommend3.jpg" alt="" style="width:450px;">
 										  </div>
-										<span style="font-size:10pt"><i>A product selected for a customer with new calculated price</i></span></p><br>
+										<span style="font-size:10pt"><i>Figure 6: A product selected for a customer with new calculated price</i></span></p><br>
 										<p>
-											Customer buying behaviour varies significantly by customer type (Business, Student, Standard). Customers in the business category 
-											purchased fewer bundles than other categories and bought less recommended products overall. Conversely, students buy the most 
-											bundles of any customer type. Female customers in the Standard category rank second in bundle purchases and show equal interest 
-											in bundles and individual products, buying the most recommended products of any customer type. Standard male customers purchase 
-											fewer bundles than women but buy the most individual items. 
+											The dynamic pricing process resulted in a price increase for 12% of products and a decrease for 17% of products. 8% of 
+											products were then found to exceed the highest competitor benchmark, so a further reduction was applied.
+										</p>
+										<p>
+											After applying the personalised discounts, 10% of product prices fell below the minimum profit margin, so these prices 
+											were adjusted to meet the minimum rate.
+										</p>
+										<p>
+											Customer buying behaviour varies significantly by customer type (Business, Student, Standard). Customers in the business 
+											category purchased fewer bundles than other categories and bought less recommended products overall. Conversely, students 
+											buy the most bundles of any customer type. Female customers in the Standard category rank second in bundle purchases and 
+											show equal interest in bundles and individual products, buying the most recommended products of any customer type. Standard 
+											male customers purchase fewer bundles than women but buy the most individual items.
 										</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-product-recommend4.jpg" alt="" style="width:325px;">
 										  </div>
-										<span style="font-size:10pt"><i>Response rate of different demographics</i></span></p><br>
+										<span style="font-size:10pt"><i>Figure 7: Response rate of different demographics</i></span></p><br>
 										
 	
 									</section>
