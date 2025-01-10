@@ -43,16 +43,17 @@
 										</p>
 									</header>
 									<p><b><i>
-										A multinational company previously stored various categories of customer, sales and revenue data on 
-										different platforms and in different file formats. 
+										A centralised database was created for a multinational company to simplify their previous system, 
+										which required accessing multiple platforms and downloading data in various file formats. 
 									</b></p></i>
 									<p><b><i>
-										To enable easy access and allow the company to make better data-driven decisions, code was created 
-										to extract the data from the various sources, clean it and convert it into a centralised database. 
+										The new system acts as a single source of truth, providing easy access to the data, and supports 
+										the company's data-driven decision-making.
 									</b></p></i>
 									<p><b><i>
-										Acting as a single source of truth, business queries were then able to be run across the entirety 
-										of the company's data.
+										Methods were defined to extract the data from the various sources, clean it and upload it to a 
+										centralised database using a star schema, from which SQL queries were run to derive statistics 
+										from the entirety of the business's data.
 									</b></p></i>
 									<section>
 									<header>
@@ -89,15 +90,17 @@
 											<img src="images/project-sql-upload2.jpg" alt="" style="width:680px;">
 										  </div>
 											<span style="font-size:10pt"><i>Checking date format with regex</i></span></p><br>
-										<h1>2.4. Uploading and querying</h1><br>
+										<h1>2.4. Uploading</h1><br>
 										<p>A database was compiled from the dataframes by defining primary and foreign keys, and the database was uploaded 
 											to PostgreSQL locally.</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-sql-upload3.jpg" alt="" style="width:790px;">
 										  </div>
 										<span style="font-size:10pt"><i>Defining primary and foreign keys for database</i></span></p><br>
-										<p>Then SQL queries were run using SQLAlchemy in Python to gain insights on sales and revenue 
-											per store and per country.</p><br>
+										
+										<h1>2.5. Querying</h1><br>
+										<p>SQL queries were run using SQLAlchemy in Python to derive on sales and revenue figures for individual stores 
+											and specific store types per market for various time periods.</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-sql-upload4.jpg" alt="" style="width:790px;">
 										  </div>
@@ -107,7 +110,7 @@
 										<header>
 											<h3>3. Results and insights</h3>
 										</header>
-										<h1>3.1 Data quality</h1><br>
+										<h1>3.1. Data quality</h1><br>
 										<p>
 										The database achieved good latency of 0.01, showcasing its efficiency. The system is easy 
 											to scale since the functions designed for data extraction and cleaning can easily 
@@ -118,7 +121,7 @@
 											to a consistent format, and all phone numbers were also standardised,  ensuring the 
 											accuracy of the subsequent analyses.
 										</p><br><br>
-										<h1>3.2 Insights from queries</h1><br>
+										<h1>3.2. Insights from queries</h1><br>
 										<p>
 										Sales start low in January and steadily build throughout the year, peaking in December, highlighting 
 											the need for preparing for increased sales in Q4. 
