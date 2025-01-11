@@ -126,10 +126,11 @@
 										
 										
 										<h1>2.2. Model design</h1><br>
-										<p>A hidden Markov model was used to calculate the probability of a particular word being a particular part of speech (emission probability) and 
-											determine which tag was most likely to be the next one in the sequence (transmission probability) for each token in the sentence.<br> 
-											<br>The hidden Markov model was coupled with a Viterbi algorithm (written in Python) to reduce the computing power required to 
-											tag a sentence by excluding low probability tokens from further calculations.											
+										<p>To tag the tokens in the corpus, a hidden Markov model (HMM) was used to calculate the probability of each token 
+											in the dataset being a particular part of speech (emission probability) and predict which POS-tag was most likely 
+											to be the next one in the sequence (transmission probability).<br><br>
+											The hidden Markov model was coupled with a Viterbi algorithm (written in Python) to reduce the computational power required 
+											to find the most likely tag pathway by eliminating low probability tokens from the calculation.											
 										</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-pos-tagger5.jpg" alt="" style="width:500px;">
