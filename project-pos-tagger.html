@@ -117,7 +117,7 @@
 													&lt;END&gt;</b>_END
 												</p>
 											</div>
-											<span style="font-size:10pt"><i>Tagged sentence from the corpus</i></span>
+											<span style="font-size:10pt"><i>Figure 1: Tagged sentence from the corpus</i></span>
 											
 											
 										</p><br>
@@ -132,7 +132,7 @@
 										<p><div class="scroll-container">
 											<img src="images/project-pos-tagger5.jpg" alt="" style="width:500px;">
 										  </div>
-										<span style="font-size:10pt"><i>Section of code from HMM/Viterbi model</i></span></p><br>
+										<span style="font-size:10pt"><i>Figure 2: Section of code from HMM/Viterbi model</i></span></p><br>
 										<p>The corpus was split randomly 75/25 into training and test sets with equal proportions of sentences from each decade. To reduce the 
 											likelihood of out-of-vocabulary (OOV) tokens, tables of common Irish verbs were added to the training data, ensuring non-zero 
 											emission probabilities for these tokens.</p><br>
@@ -161,16 +161,16 @@
 										<p><div class="scroll-container">
 											<img src="images/project-pos-tagger3.jpg" alt="" style="width:300px;">
 										  </div>
-										<span style="font-size:10pt"><i>Precision, recall, f-scores for complexity marker tags (unigram model)</i></span></p><br>
-										<p>The model struggles to correctly tag relative pronouns, since the tag 'a' can be assigned [rel] (relative pronoun), [pos] 
-											(possessive pronoun), or [par] (particle). The overall f-score for complexity tags lower as a result. 
-											For this reason, relative pronouns were excluded when conducting the linguistic analysis section.
+										<span style="font-size:10pt"><i>Figure 3: Precision, recall, f-scores for complexity marker tags (unigram model)</i></span></p><br>
+										<p>The model struggles to correctly tag relative pronouns, since the token 'a' can signify a relative pronoun [rel], a possessive 
+											pronoun [pos], or a particle [par]. The overall f-score for complexity tags lower as a result. 
+											For this reason, the category 'relative pronoun' was later excluded from the linguistic analysis.
 											There is also some ambiguity between [sconj] (subordinating conjunction) or [conj] (coordinating conjunction) tags.
 										</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-pos-tagger2.jpg" alt="" style="width:550px;">
 										  </div>
-										<span style="font-size:10pt"><i>Confusion matrix for complexity marker tags (unigram model)</i></span></p><br>
+										<span style="font-size:10pt"><i>Figure 4: Confusion matrix for complexity marker tags (unigram model)</i></span></p><br>
 										<p>Both models (unigram and bigram) achieved similar precision, recall and f-score values in tagging verb 
 											forms. The score were higher than for complexity tags, since verb tags are relatively unambiguous. The unigram scores slightly 
 											higher overall (91.5% accuracy). The inclusion of tables of common Irish verb verbs to the emission data also improved accuracy. 
@@ -178,7 +178,7 @@
 										<p><div class="scroll-container">
 											<img src="images/project-pos-tagger4.jpg" alt="" style="width:370px;">
 										  </div>
-										<span style="font-size:10pt"><i>Precision, recall, f-scores for verb form tags (unigram model)</i></span></p><br>
+										<span style="font-size:10pt"><i>Figure 5: Precision, recall, f-scores for verb form tags (unigram model)</i></span></p><br>
 										<p>In the linguistic analysis, a shift away from synthetic to toward analytic verb forms was observed. No clear trend regarding 
 											change in sentence complexity since 1960 was found. 
 										</p><br>
@@ -190,7 +190,9 @@
 										</header>
 										<p>
 											To improve the analysis of sentence complexity, the tags for coordinating conjunctions and subordinating conjunctions 
-											could be combined into a single tag, reducing the number of false positives and false negatives.
+											could be combined into a single tag, reducing the number of false positives and false negatives. To reduce the ambiguity of
+											the relative pronoun 'a', additional information regarding its grammatical agreement with the following verb (initial 
+											letter mutation) could be added as a marker to the tag to assist the model.
 										</p>
 										<p>The investigation found that sentence complexity hasn't declined in formal written texts since 1960, while previous research 
 											has identified a reduction in complexity in younger native speakers. Therefore, formal written texts offer a high-quality 
