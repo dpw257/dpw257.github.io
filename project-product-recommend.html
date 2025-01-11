@@ -62,7 +62,7 @@
 										</header>
 										<p>
 											&nbsp; &#x25cf; &nbsp; Segment customers according to recency, frequency and monetary value of their purchases (RFM scores).<br>
-											&nbsp; &#x25cf; &nbsp; Cluster products using TF-IDF of product descriptions and recommend product for each customer.<br>
+											&nbsp; &#x25cf; &nbsp; Use TF-IDF of product descriptions to recommend further products for each customer.<br>
 											&nbsp; &#x25cf; &nbsp; Scrape and clean competitor prices from price comparison site.<br>
 											&nbsp; &#x25cf; &nbsp; Assess success rate with different demographics and suggest improvements.<br>
 											&nbsp; &#x25cf; &nbsp; Set prices for recommended products based on competitor pricing, cost, sales history and quantity in stock 
@@ -99,7 +99,7 @@
 											<img src="images/project-product-recommend1.jpg" alt="" style="width:450px;">
 										  </div>
 										<span style="font-size:10pt"><i>Figure 2: Customers segmented on value (RFM scores)</i></span></p><br>
-										<h1>2.3. Product clustering and recommendation system</h1><br>
+										<h1>2.3. Calculating product similarity and recommendation system</h1><br>
 										<p>The similarity of products was determined by analysing the text of each product's description.  Each text was tokenised, 
 											stopwords were removed and a TF-IDF score (term frequency-inverse document frequency) was calculated and stored as 
 											a vector.  
@@ -110,7 +110,7 @@
 										<p><div class="scroll-container">
 											<img src="images/project-product-recommend2.jpg" alt="" style="width:670px;">
 										  </div>
-										<span style="font-size:10pt"><i>Figure 3: Products clustered by TD-IDF of descriptions</i></span></p><br>
+										<span style="font-size:10pt"><i>Figure 3: Similarity of products using cosine distance between TF-IDF vectors</i></span></p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-product-recommend6.jpg" alt="" style="width:670px;">
 										  </div>
@@ -234,7 +234,7 @@
 										<div class="col-8">
 											<a href="project-product-recommend"><h4>Product recommendation</h4>
 											<p>
-												Data scraped with BeautifulSoup, product clustering, dynamic pricing.
+												Data scraped with BeautifulSoup, product similarity, dynamic pricing.
 											</p>
 											</a>
 										</div>  -->
