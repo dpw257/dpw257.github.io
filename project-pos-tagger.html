@@ -88,7 +88,14 @@
 											</p><br>
 										<h1>2.1. Data collection and preprocessing</h1><br>
 										<p>A corpus consisting of 6000 sentences from a single publication spanning the years 1960 to 2020 was digitised with OCR, proofread and manually 
-											tagged with the newly defined tagset.</p><br>
+											tagged with the newly defined tagset.
+											<br><br>
+											The dataset was duplicated to create one version for calculating the emission probabilities (the likelihood of a token corresponding 
+											to a specific part of speech) and another version for calculating the transition probabilities (the likelihood of a part of speech 
+											being followed by another specific part of speech). To reduce the occurance of out-of-vocabulary tokens, sequences of additional tagged 
+											tokens were added to the emission dataset, namely lists of numbers, individual letters, common English words, and verb forms of common 
+											Irish verbs.  											
+										</p><br>
 										<p>
 											<!-- <div class="scroll-container">
 											<img src="images/project-pos-tagger1.jpg" alt="" style="width:680px;">  
