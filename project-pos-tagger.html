@@ -133,21 +133,21 @@
 										
 										
 										<h1>2.2. Model design</h1><br>
-										<p>To tag the tokens in the corpus, a hidden Markov model (HMM) was used to calculate the probability of each token 
-											in the dataset being a particular part of speech (emission probability) and predict which POS-tag was most likely 
+										<p>To tag the tokens in the corpus, a hidden Markov model (HMM) was used to calculate the probability of each token
+											in the dataset being a particular part of speech (emission probability) and predict which POS-tag was most likely
 											to be the next one in the sequence (transmission probability).<br><br>
-											The hidden Markov model was coupled with a Viterbi algorithm (written in Python) to reduce the computational power required 
+											The hidden Markov model was coupled with a Viterbi algorithm (written in Python) to reduce the computational power required
 											to find the most likely tag pathway by eliminating low probability tokens from the calculation.											
 										</p><br>
 										<p><div class="scroll-container">
 											<img src="images/project-pos-tagger5.jpg" alt="" style="width:500px;">
 										  </div>
 										<span style="font-size:10pt"><i>Figure 2: Section of code from HMM/Viterbi model</i></span></p><br>
-										<p>The corpus was split randomly 75/25 into training and test sets with equal proportions of sentences from each decade. To reduce the 
-											likelihood of out-of-vocabulary (OOV) tokens, tables of common Irish verbs were added to the training data, ensuring non-zero 
+										<p>The corpus was split randomly 75/25 into training and test sets with equal proportions of sentences from each decade. To reduce the
+											likelihood of out-of-vocabulary (OOV) tokens, tables of common Irish verbs were added to the training data, ensuring non-zero
 											emission probabilities for these tokens.</p><br>
 										<h1>2.3. Performance metrics</h1><br>
-										<p>&nbsp; &#x25cf; &nbsp; Overall accuracy score for  model and for each decade in the corpus.
+										<p>&nbsp; &#x25cf; &nbsp; Overall accuracy score for model and for each decade in the corpus.
 											<br>
 											&nbsp; &#x25cf; &nbsp; Precision, recall, and F-score individual verb tags, complexity markers tags and overall model.
 											<br>
